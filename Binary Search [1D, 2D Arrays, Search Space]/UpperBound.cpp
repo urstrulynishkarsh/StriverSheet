@@ -5,19 +5,18 @@
 using namespace std;
 
 
-int lowerBound(vector<int> &arr,int k)
-{
+int upperBound(vector<int> &nums, int x){
     int s=0;
-    int e=arr.size()-1;
+    int e=nums.size()-1;
     int ans=-1;
     while(s<=e)
     {
         int mid=s+(e-s)/2;
-        if(arr[mid]>=k)
+        if(nums[mid]>x)
         {
             ans=mid;
             e=mid-1;
-
+            
         }
         else{
             s=mid+1;
@@ -42,7 +41,7 @@ int main()
     cout<<"Enter the value of X: ";
     cin>>k;
 
-    cout<<lowerBound(arr,k);
+    cout<<upperBound(arr,k);
 
     return 0;
     
