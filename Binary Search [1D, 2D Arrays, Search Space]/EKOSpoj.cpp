@@ -11,7 +11,6 @@ bool ispossible(vector<long long> &tree,long long int m, long long int mid)
         {
             woodcollected+=tree[i]-mid;
         }
-        
     }
     return woodcollected>=m;
 }
