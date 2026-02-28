@@ -1,4 +1,5 @@
 #include<iostream>
+#include<vector>
 #include<string.h>
 using namespace std;
 
@@ -27,9 +28,28 @@ using namespace std;
         }
         return dp[i][j]=ans;
     }
-    int longestCommonSubsequence(string text1, string text2) {
-        vector<vector<int> >dp(text1.length()+1,vector<int>(text2.length()+1,-1));
-        return solve(text1,text2,0,0,dp);
+
+      string printLCS(string &str1, string &str2,vector<vector<int> >&dp)
+    {
+      int i=0,j=0;
+      string ans;
+      while(i<str1.length() && j< str2.length())
+      {
+          if(str1[i]==str2[j])
+          {
+              ans.push_back(str1[i]);
+              i++;
+              j++;
+          }
+          else if(dp[i+1][j]>dp[i][j+1])
+          {
+            i++;
+          }
+          else{
+            j++;
+          }
+      }
+      return ans;
     }
 int main()
 {
@@ -42,7 +62,8 @@ int main()
     getline(cin,t);
 
 
+vector<vector<int> >dp(s.length()+1,vector<int>(t.length()+1,-1));
 
-
-    cout<<longestCommonSubsequence(s,t);
+  solve(s,t,0,0,dp);
+  cout<<printLCS(s,t,dp);
 }
